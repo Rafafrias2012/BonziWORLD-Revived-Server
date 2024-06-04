@@ -795,7 +795,8 @@ let userCommands = {
 
       this.socket.emit("alert", "The crosscolor must be a valid image URL from proxy\nValid file image types are: .png, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonzi.lol colors will result in a ban!");
 
-    },
+    }
+},
 	voice: function (color) {
         this.public.voice = color;
         this.room.updateUser(this);
