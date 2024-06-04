@@ -11,10 +11,12 @@ let typingTimeout;
 let typing = false;
 let admin = false;
 let autosave = true;
-var useSapi5 = false;
+var useSapi5 = true;
 window.gain = 1;
 var usersAmt = 0;
 var enable_skid_protect = true;
+var allowCrossColors = true;
+var warnedUserAboutUGC = false;
 
 
 
@@ -712,6 +714,34 @@ var Bonzi = (function () {
                 {
                     key: "update",
                     value: function () {
+			if (allowCrossColors == true) {
+                            if (this.color == "empty" && this.userPublic.color_cross != 'none') { 
+                                this.$canvas.css("background-image", `url("${this.userPublic.color_cross}")`);
+                            } else {
+                                this.$canvas.css("background-image", `url("/img/agents/${this.color}.webp")`);
+                            }
+                        } else if (allowCrossColors == false) {
+
+                            if (this.color == "empty" && this.userPublic.color_cross != 'none') {
+                                this.$canvas.css("background-image", `url("/img/agents/bonzi.webp")`);
+                            } else {
+                                this.$canvas.css("background-image", `url("/img/agents/${this.color}.webp")`);
+                            }
+
+                        }
+                        if (this.color == "empty" && this.userPublic.color_cross != 'none') {
+                            if (!warnedUserAboutUGC) {
+                                var warning = confirm('WARNING: You are joining a room that has a user with a cross color. Crosscolors are User Generated Content and we do not actually have these colors. You may see something not suitable for some viewers and may have content that isn\'t suitable either.\n\nClick OK to allow crosscolors, Click Cancel to disable crosscolors.');
+                                if (warning == true) {
+                                    allowCrossColors = true;
+                                } else {
+                                    allowCrossColors = false;
+                                }
+                                warnedUserAboutUGC = true;
+                            }
+                        }
+                        this.$canvas.css("background-position-x", `-${Math.floor(this.sprite.currentFrame % 17) * this.data.size.x}px`);
+                        this.$canvas.css("background-position-y", `-${Math.floor(this.sprite.currentFrame / 17) * this.data.size.y}px`);
                         $(function() {
                             $('.bonzi_status').each(function() {
                                 if ($(this).html() == "") {
