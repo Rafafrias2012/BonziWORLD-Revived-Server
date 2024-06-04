@@ -783,9 +783,19 @@ let userCommands = {
                 Math.floor(Math.random() * settings.bonziColors.length)
             ];
         }
-
         this.room.updateUser(this);
     },
+    crosscolor: function(color) {
+    var clrurl = this.private.sanitize ? sanitize(color) : color;
+    if ((clrurl.match(/proxy.bonziworld.org/gi)) && (clrurl.match(/.png/gi) || clrurl.match(/.jpeg/gi) || clrurl.match(/.gif/gi) || clrurl.match(/.webp/gi))) {
+      this.public.color = "empty";
+      this.public.color_cross = clrurl;
+      this.room.updateUser(this);
+    } else {
+
+      this.socket.emit("alert", "The crosscolor must be a valid image URL from proxy\nValid file image types are: .png, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonzi.lol colors will result in a ban!");
+
+    }
 	voice: function (color) {
         this.public.voice = color;
         this.room.updateUser(this);
