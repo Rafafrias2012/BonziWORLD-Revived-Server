@@ -11,7 +11,7 @@ let typingTimeout;
 let typing = false;
 let admin = false;
 let autosave = true;
-var useSapi5 = true;
+var useSapi5 = false;
 window.gain = 1;
 var usersAmt = 0;
 var enable_skid_protect = true;
