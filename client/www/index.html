@@ -6495,10 +6495,148 @@
         <meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9" />
         <meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9" />
         <meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9" />
+        <script>
+        var show = false;
+        
+        function showtoggle(){
+            $('#logshow').hide();$('#mainlog').show()
+            document.getElementById("logcontent").scrollTop = document.getElementById("logcontent").scrollHeight;
+        }
+        </script>
+
+<style>
+  
+span{
+font-size:12px;
+}
+  .quote{
+  border-left: 3px solid rgba(0,0,0,0.3);
+  padding: 2px 3px;
+}
+#log{
+position:fixed;
+top:0;
+left:0;
+max-width:300px;
+color:white;
+z-index:1000;
+height:calc(100% - 30px);
+}
+#log button{
+font-size:20px;
+position:fixed;
+padding:5px 10px;
+top:3px;
+left:3px;
+border:none;
+font-family:arial;
+background-color: #502570;
+border: 2px solid white;
+border-radius: 4px;
+box-shadow: inset 3px 3px 2px 2px #803376, inset -3px -3px 2px 2px #351044;
+color:white;
+z-index:-10;
+}
+#log button:active{
+box-shadow: inset 3px 3px 2px 2px #351044, inset -3px -3px 2px 2px #803376;
+}
+#mainlog{
+    position:fixed;
+    height:calc(100% - 30px);
+    width:320px;
+    top:0;
+    left:0;
+}
+#title{
+    padding: 6px 8px;
+    width:100%;
+    box-sizing: border-box;
+    font-size:20px;
+    border-radius:0px 5px 0px 0px;
+    background-color: #6d3399;  
+    box-shadow: inset -3px 3px 3px 2px rgba(255,255,255,0.2);     
+}
+#title i{
+    float:right;
+}
+#logcontent{
+    width:100%;
+    line-height:1.5;
+    padding:0px 5px;
+    left:0px;
+    box-sizing: border-box;
+    height:calc(100% - 31px);
+    background-color:rgba(0,0,0,0.8);
+    box-shadow: inset -3px 0px 3px 2px rgba(255,255,255,0.4);    
+    overflow-y:scroll;
+    border-radius:0px 0px 5px 0px;
+    overflow-x:break;
+    word-break:break-word;
+}
+#logcontent::-webkit-scrollbar{
+    display:none;
+}
+  .userimage{
+    width: 172px;
+    max-height: 172px;
+  }
+  .uservideo{
+    width: 172px;
+    max-height: 172px;
+  }
+  #pollyes, #pollno{
+      width:100%;
+      font-size:19px;
+      box-sizing: border-box;
+      padding: 5px 4px;
+      color:black;
+      overflow:visible;
+  }
+  #pollyes{
+      width:1%;
+      background-color:rgba(0,255,0,0.3);
+  }
+  #pollno{
+      background-color:rgba(255,0,0,0.3);
+      width:1%;
+  }
+  .official_tag{ 
+  border-style: solid;
+  border-width: 4px 12px 4px 0;
+  border-radius: 9px;
+  border: #000000 solid 1px;
+  padding: 5px 6px;
+  position: absolute;
+  background: #ffffe1;
+  transform:translateY(-100%);
+  font-size: 11px;
+  color: #000;}
+
+        
+.bonzi_name {
+    z-index:0;
+}
+.bonzi_placeholder{
+    z-index: -1;
+}
+.bubble{
+    z-index:1;
+}
+</style>
     </head>
 
     <body>
         <div id="content">
+            <div id="bghold"></div>
+<div id="log" style="display:none;">
+<div id="mainlog" style="display:none;">
+<div id="title">Bonzi LOG™ <i onclick="$('#logshow').show();$('#mainlog').hide()" class="fa fa-close" aria-hidden="true"></i></div>
+<div id="logcontent">
+    <p>Welcome to BonziWORLD/p>
+</div>
+</div>
+<button id="logshow" onclick="showtoggle()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+</div>
             <div id="themes_icon" class="no_selection" alt="Themes" title="Themes">
                 <img src="./img/icons/other/themes.png" width="64" draggable="false" /><br />
                 <span class="themes_label no_selection" style="letter-spacing: 1px; font-size: 11px; padding: 5px; margin-top: 5px; margin-right: 8px; font-weight: 700; color: #fdfdfdba;">Themes</span>
