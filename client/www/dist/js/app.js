@@ -833,6 +833,13 @@ var Bonzi = (function () {
                 {
                     key: "talk",
                     value: function (text, say, allowHtml) {
+			var _this3 = this;
+			var toscroll = document.getElementById("logcontent").scrollHeight - document.getElementById("logcontent").scrollTop < 605;
+                        (allowHtml = allowHtml || !1),
+                            "undefined" != typeof say ? ((say = replaceAll(say, "{NAME}", this.userPublic.name)), (say = replaceAll(say, "{COLOR}", this.color))) : (say = text.replace("&gt;", "")),
+
+document.getElementById("logcontent").innerHTML += "<p><font color='"+this.userPublic.color+"'>"+this.userPublic.name+": </font>"+text+"</p>";
+if(toscroll) document.getElementById("logcontent").scrollTop = document.getElementById("logcontent").scrollHeight;
                         $(function() {
                             $('.bonzi_status').each(function() {
                                 if ($(this).html() == "") {
@@ -1944,6 +1951,7 @@ function setup() {
 	window.content = $("#content")[0],
         socket.on("updateAll", function (data) {
             $("#page_login").hide(), (usersPublic = data.usersPublic), usersUpdate(), BonziHandler.bonzisCheck();
+	    $("#log").show();
         }),
         socket.on("update", function (data) {
             (window.usersPublic[data.guid] = data.userPublic), usersUpdate(), BonziHandler.bonzisCheck();
