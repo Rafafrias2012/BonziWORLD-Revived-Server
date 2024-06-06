@@ -1183,7 +1183,7 @@ class User {
 
 		// If not, set room to public
 
-        if (typeof rid == "undefined" || rid === "" || rid.startsWith("20")) {
+        if (typeof rid == String(undefined) || rid === "" || rid.startsWith("20")) {
             if (rid.startsWith("20")) {
                 this.socket.emit("loginFail", {
                     reason: "nameMal",
