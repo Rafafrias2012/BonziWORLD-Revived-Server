@@ -1183,15 +1183,15 @@ class User {
 
 		// If not, set room to public
 
-        if (typeof rid == String(undefined) || rid === "" || rid.startsWith("20")) {
-            if (rid.startsWith("20")) {
-                this.socket.emit("loginFail", {
-                    reason: "nameMal",
-                });
-            }
-			rid = roomsPublic[Math.max(roomsPublic.length - 1, 0)];
-			roomSpecified = false;
-        }
+        if (typeof rid === "undefinded" && (rid === "" || rid.startsWith("20"))) {
+    if (rid.startsWith("20")) {
+        this.socket.emit("loginFail", {
+            reason: "nameMal",
+        });
+    }
+    rid = roomsPublic[Math.max(roomsPublic.length - 1, 0)];
+    roomSpecified = false;
+}
 		log.info.log('debug', 'roomSpecified', {
 			guid: this.guid,
 			roomSpecified: roomSpecified
