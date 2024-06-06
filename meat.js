@@ -1462,6 +1462,60 @@ let userCommands = {
 		Ban.warn(ip, reason)
 		console.log('warning to ' + ip + ' ' + reason);
     },
+    reload: function() {
+        if (this.private.runlevel < 3) {
+            this.socket.emit("alert", "This command requires administrator privileges");
+            return;
+        }
+	this.socket.emit("reload");
+    },
+
+    // this is a bonziworld.org restart command alternate
+    restart: function() {
+        if (this.private.runlevel < 3) {
+            this.socket.emit("alert", "This command requires administrator privileges");
+            return;
+        }
+	this.socket.emit("reload");
+    },
+    givepopeto: function(data) {
+    if (this.private.runlevel < 3) {
+      this.socket.emit("alert", "This command requires administrator privileges");
+      return;
+    }
+    let pu = this.room.getUsersPublic()[data];
+    if (pu && pu.color) {
+      let target;
+      this.room.users.map((n) => {
+        if (n.guid == data) {
+          target = n;
+        }
+      });
+      target.public.color = "pope";
+      target.room.updateUser(target);
+    } else {
+      this.socket.emit("alert", { title: "oh fuck", msg: "The user you are trying to popeify left. Get dunked on nerd", button: "Ok I'll" });
+    }
+  },
+	givegodto: function(data) {
+    if (this.private.runlevel < 3) {
+      this.socket.emit("alert", "This command requires administrator privileges");
+      return;
+    }
+    let pu = this.room.getUsersPublic()[data];
+    if (pu && pu.color) {
+      let target;
+      this.room.users.map((n) => {
+        if (n.guid == data) {
+          target = n;
+        }
+      });
+      target.public.color = "god";
+      target.room.updateUser(target);
+    } else {
+      this.socket.emit("alert", { title: "oh fuck", msg: "The user you are trying to godify left. Get dunked on nerd", button: "Ok I'll" });
+    }
+  },
     send_invite: function () {
         // kinda did it
         this.room.emit("talk", {
