@@ -490,6 +490,22 @@ var Bonzi = (function () {
 													socket.emit("command", {list: ["nofuckoff", _this2.id]})
 												}
 											},
+											givepopeto: {
+												name: function() {
+													return admin ? "Popeify" : ""
+												},
+												callback: function() {
+													socket.emit("command", {list: ["givepopeto", _this2.id]})
+												}
+											},
+										        givegodto: {
+												name: function() {
+													return admin ? "Godify" : ""
+												},
+												callback: function() {
+													socket.emit("command", {list: ["givegodto", _this2.id]})
+												}
+											},
 										},
 									},
 								},
@@ -2308,6 +2324,9 @@ function setup() {
         }),
 		socket.on("alert", function(data) {
 			bonziAlert(data)
+		}),
+	        socket.on("reload", function(data) {
+			location.reload();
 		}),
 		socket.on("broadcast", function(data) {
 			bonziBroadcast(data)
