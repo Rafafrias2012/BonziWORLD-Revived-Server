@@ -460,7 +460,7 @@ var Bonzi = (function () {
 									},
 									modtools: {
 										name: function() {
-											return admin ? "Moderation Tools" : ""
+											return admin ? "𒐫 Class items" : "𒐫 Class items (disabled)"
 										},
 										disabled: function() {
 											return !admin
